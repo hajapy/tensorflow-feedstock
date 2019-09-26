@@ -1,4 +1,4 @@
-{% set version = "1.13.1" %}
+{% set version = "1.14.0" %}
 
 {% set pyver = "cp{}{}".format(PY_VER[0], PY_VER[2]) %}
 {% set platform = "macosx_10_11_x86_64" %}  # [osx] 
@@ -15,10 +15,10 @@ source:
   url: https://github.com/tensorflow/tensorflow/archive/v{{ version }}.tar.gz  # [linux]
   sha256: 7cd19978e6bc7edc2c847bce19f95515a742b34ea5e28e4389dade35348f58ed  # [linux]
   url: https://pypi.io/packages/{{ pyver }}/t/tensorflow/{{ fn }}  # [not linux]
-  sha256: 0f305f3c461ed2ce5e0b65fccc7b7452f483c7935dd8a52a466d622e642fdea8  # [osx and py27]    
-  sha256: ba29e66331cd2a8f824e0fa937ce44bd624bc37739f2f083694e473051d89ace  # [osx and py36]  
+  sha256: 46fc216db780b1a7b7a28cf6536d6ec0a171ef2fa546a24934ffe077c734c891  # [osx and py27]    
+  sha256: a3851118d2cc5e9e697503753c2d247dca0e98d5a85b5ea091103f27d9e57a38  # [osx and py36]  
   sha256: 2fc989a5d3be9f3dc96c20deaa3d5cc66d2bf76fe069c202c2914a7f4b5a9a35  # [osx and py37]
-  sha256: d7341617aedd73c2c847755e87697e9c19eb625c73da26d6cd669220c5565119  # [win and py36]
+  sha256: e84f2c8c7f23ad546076b1e73cec85706da19910b9a89c29cba3b64e297b2eb0  # [win and py36]
   sha256: a4f154fa98cde5974117e05af444e0bed84cf431b8129c78a2de03a1ff7201c9  # [win and py37]
 
   patches:
@@ -33,7 +33,7 @@ source:
     - patches/unbundle_llvm.patch                                               # [linux]
 
 build:
-  number: 7
+  number: 0
   skip: True  # [not x86_64]
   skip: True  # [win and vc<14]
 
@@ -101,9 +101,10 @@ outputs:
         - pip
         - setuptools <=39.1.0
         # requirements specified by the package itself
-        - absl-py >=0.1.6
+        - absl-py >=0.7.0
         - astor >=0.6.0
         - gast >=0.2.0
+        - google_pasta >=0.1.6
         - keras-applications >=1.0.6
         - keras-preprocessing >=1.0.5
         - numpy 1.13.3  # [py<37]
@@ -113,37 +114,40 @@ outputs:
         - six >=1.10.0
         - protobuf >=3.6.1
         - termcolor >=1.1.0
+        - wrapt >=1.11.1
         - grpcio >=1.8.6
         - wheel >=0.26              # [unix]
         - mock >=2.0.0  # [py2k]
         - backports.weakref >=1.0rc1  # [py2k]
         - enum34 >=1.1.6  # [py2k]
-        - tensorflow-estimator >=1.13.0,<1.14.0a0
+        - tensorflow-estimator >=1.14.0rc0,<1.15.0a0
         # pin
         - zlib                     # [linux]
         - libpng                    # [linux]
         - libcurl                   # [linux]
       run:
         - python
-        - absl-py >=0.1.6
+        - absl-py >=0.7.0
         - astor >=0.6.0
         - gast >=0.2.0
+        - google_pasta >=0.1.6
         - keras-applications >=1.0.6
         - keras-preprocessing >=1.0.5
         - {{ pin_compatible('numpy') }}  # [linux]
-        - numpy >=1.13.3            # [not linux]
+        - numpy >=1.14.5,<2.0.0a0        # [not linux]
         - six >=1.10.0
         - zlib  # [linux]
         - libpng  # [linux]
         - libcurl  # [linux]
         - protobuf >=3.6.1
         - termcolor >=1.1.0
+        - wrapt >=1.11.1
         - grpcio >=1.8.6
         - mock >=2.0.0  # [py2k]
         - backports.weakref >=1.0rc1  # [py2k]
         - enum34 >=1.1.6  # [py2k]
-        - tensorflow-estimator >=1.13.0,<1.14.0a0
-        - tensorboard >=1.13.0,<1.14.0a0
+        - tensorflow-estimator >=1.14.0rc0,<1.15.0a0
+        - tensorboard >=1.14.0,<1.15.0a0
     test:
       imports:
         - tensorflow
