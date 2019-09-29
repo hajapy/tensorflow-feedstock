@@ -55,7 +55,7 @@ requirements:
     - google-pasta >=0.1.6
     - keras-applications >=1.0.6
     - keras-preprocessing >=1.0.5
-    - numpy 1.14.6
+    - numpy 1.16.1
     - llvmdev >=8.0.0,<9.0.0    # [linux]
     - zlib                      # [linux]
     - libpng                    # [linux]
@@ -105,7 +105,7 @@ outputs:
         - google-pasta >=0.1.6
         - keras-applications >=1.0.6
         - keras-preprocessing >=1.0.5
-        - numpy 1.14.6
+        - numpy 1.16.1
         - six >=1.10.0
         - protobuf >=3.6.1
         - termcolor >=1.1.0
@@ -129,7 +129,7 @@ outputs:
         - keras-applications >=1.0.6
         - keras-preprocessing >=1.0.5
         - {{ pin_compatible('numpy') }}  # [linux]
-        - numpy >=1.14.5,<2.0.0a0        # [not linux]
+        - numpy >=1.16.1,<2.0.0a0        # [not linux]
         - six >=1.10.0
         - zlib  # [linux]
         - libpng  # [linux]
